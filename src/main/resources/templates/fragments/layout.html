@@ -10,7 +10,11 @@
 
 <body>
 
-        <div th:replace="${template}"></div>
+        <div class="container-fluid p-5 bg-primary text-white text-center">
+                <h1>Upload pdf file</h1>
+                <p>Upload pdf file and view them</p>
+        </div>
+        <div th:replace="${template}" class="container mt-5"></div>
 
         <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
 </body>
