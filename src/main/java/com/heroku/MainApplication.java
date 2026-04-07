@@ -21,18 +21,9 @@ public class MainApplication {
         return "index";
     }
 
-    @GetMapping("/hello")
-    public String hello(Map<String, Object> model, String input) {
-        // http://localhost:5000/hello?input=testspringboot
-        try {
-            if (input == null) {
-                input = "N/A";
-            }
-            model.put("message", input);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return "index";
+    @GetMapping("/upload")
+    public String upload(Map<String, Object> model) {
+        return "upload";
     }
 
     @GetMapping("/view-pdf")
