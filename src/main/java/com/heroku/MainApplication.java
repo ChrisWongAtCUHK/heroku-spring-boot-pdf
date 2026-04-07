@@ -26,11 +26,6 @@ public class MainApplication {
         return "index";
     }
 
-    @GetMapping("/upload")
-    public String upload(Map<String, Object> model) {
-        return "upload";
-    }
-
     @GetMapping("/view-pdf")
     public ResponseEntity<Resource> viewPdf(@RequestParam(required = true) String name) {
         Resource pdf = resourceLoader.getResource("file:./pdf/" + name);
