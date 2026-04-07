@@ -1,8 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'index')}">
+
+<head>
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+
+    <!-- JS (Requires Popper.js/jQuery depending on Bootstrap version) -->
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+</head>
+
 <body>
     <div class="container">
         <p th:text="${message}">Message</p>
     </div>
 </body>
+
 </html>
