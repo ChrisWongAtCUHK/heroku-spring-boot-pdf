@@ -11,8 +11,8 @@
 <body>
 
         <div class="container-fluid p-5 bg-primary text-white text-center">
-                <h1>Upload pdf file</h1>
-                <p>Upload pdf file and view them</p>
+                <h1><a th:href="@{/upload}" style="color:white;">Upload pdf file</a></h1>
+                <h1><a th:href="@{/}" style="color:white;">View pdf files</a></h1>
         </div>
         <div th:replace="${template}" class="container mt-5"></div>
 
