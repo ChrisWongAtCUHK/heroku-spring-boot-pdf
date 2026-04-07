@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.heroku.Constant;
+
 @Controller
 public class FileUploadController {
     @GetMapping("/upload")
@@ -30,10 +32,10 @@ public class FileUploadController {
         String fileName = file.getOriginalFilename();
 
         // Save the file or process bytes
-        String uploadDir = "./pdf/";
+        String uploadDir = "./" + Constant.FOLDER + "/";
         Path path = Paths.get(uploadDir + file.getOriginalFilename());
         Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 
-        return "redirect:/view-pdf?name=" + fileName;
+        return "redirect:/" + Constant.VIEW_PDF_URL + "?name=" + fileName;
     }
 }

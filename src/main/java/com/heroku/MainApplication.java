@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.io.File;
+import java.util.Arrays;
 import java.util.Map;
 
 @SpringBootApplication
@@ -22,13 +24,15 @@ public class MainApplication {
 
     @GetMapping("/")
     public String index(Map<String, Object> model) {
-        model.put("message", "This is a test");
+        File[] pdfFiles = new File(Constant.FOLDER).listFiles();
+        String[] fileNames = Arrays.stream(pdfFiles).map(File::getName).toArray(String[]::new);
+        model.put("fileNames", fileNames);
         return "index";
     }
 
-    @GetMapping("/view-pdf")
+    @GetMapping("/" + Constant.VIEW_PDF_URL)
     public ResponseEntity<Resource> viewPdf(@RequestParam(required = true) String name) {
-        Resource pdf = resourceLoader.getResource("file:./pdf/" + name);
+        Resource pdf = resourceLoader.getResource("file:./" + Constant.FOLDER + "/" + name);
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_PDF)
                 .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"name\"")
