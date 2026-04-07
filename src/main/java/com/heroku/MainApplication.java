@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
 
@@ -31,11 +32,11 @@ public class MainApplication {
     }
 
     @GetMapping("/view-pdf")
-    public ResponseEntity<Resource> viewPdf() {
-        Resource pdf = resourceLoader.getResource("file:./pdf/sample.pdf");
+    public ResponseEntity<Resource> viewPdf(@RequestParam(required = true) String name) {
+        Resource pdf = resourceLoader.getResource("file:./pdf/" + name);
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_PDF)
-                .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"sample.pdf\"")
+                .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"name\"")
                 .body(pdf);
     }
 
