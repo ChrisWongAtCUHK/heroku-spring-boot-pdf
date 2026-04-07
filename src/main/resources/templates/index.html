@@ -10,7 +10,8 @@
 <body>
     <div class="container">
         <ul class="list-group">
-            <li class="list-group-item" th:each="fileName : ${fileNames}" th:text="${fileName}">Placeholder</li>
+            <li th:each="fileName : ${fileNames}">
+                <a th:href="@{/view-pdf?name={fileName}(fileName=${fileName})}" th:text="${fileName}">File name</a>
         </ul>
     </div>
 </body>
